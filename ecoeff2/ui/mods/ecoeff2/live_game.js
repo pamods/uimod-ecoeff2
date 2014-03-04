@@ -1,0 +1,1 @@
+$('.div_alert_panel').attr("style", 'margin:70px auto 0px;');

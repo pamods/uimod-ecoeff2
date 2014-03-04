@@ -1,0 +1,29 @@
+{
+    "context": "client",
+    "identifier": "info.nanodesu.ecoeff2",
+    "display_name": "Economy Efficiency 2",
+    "description": "Improves the Eco Information bars",
+    "author": "Cola_Colin, stan_petit_cul",
+    "version": "1.0",
+    "build": "62225",
+    "date": "2014/03/04",
+    "signature": "not yet implemented",
+    "forum": "TODO",
+    "category": [
+        "in-game",
+        "ui"
+    ],
+    "id": "ecoeff2",
+    "icon": "http://pamods.github.io/icons/EcoEff.png",
+    "priority": 100,
+    "scenes": {
+        "live_game_econ": [
+            "coui://ui/mods/ecoeff2/live_game_econ.css",
+            "coui://ui/mods/ecoeff2/live_game_econ.js"
+        ],
+        "live_game": [
+            "coui://ui/mods/ecoeff2/live_game.js"
+        ]
+    },
+    "enabled": true
+}
