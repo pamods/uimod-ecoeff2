@@ -45,10 +45,10 @@
 	
 	// okay
 	model.metalIsOkay = ko.computed(function() {
-		return model.metalNet() > 0 && model.metalStorageMid();
+		return model.metalNet() >= 0 && model.metalStorageMid();
 	});
 	model.energyIsOkay = ko.computed(function() {
-		return model.energyNet() > 0 && model.energyStorageMid(); 
+		return model.energyNet() >= 0 && model.energyStorageMid(); 
 	});
 	
 	// dropping
@@ -89,12 +89,12 @@
 		return (model.metalIsStalling() || model.energyIsStalling()) && !model.notEnoughRes();
 	});
 	
-	model.overallDropping = ko.computed(function() {
+	model.overallDropping = ko.computed(function() {**
 		return model.metalIsDropping() && (model.energyIsSpoiled() || model.energyIsOkay() || model.energyIsDropping());
 	});
 
 	model.overallOk = ko.computed(function() {
-		return model.metalIsOkay() && (model.energyIsSpoiled() || model.energyIsOkay());
+		return (!model.metalIsSpoiled() && !model.energyIsSpoiled()) && (model.metalIsSpoiled() || model.metalIsOkay()) && (model.energyIsSpoiled() || model.energyIsOkay());
 	});	
 	
 	model.overallSpoiled = ko.computed(function() {
@@ -124,13 +124,46 @@
 	model.energyNetKStr = ko.computed(function() {
 		var positive = model.energyNetK() > 0;
 		var a = positive ? "+" : "";
-		return a+model.energyNetK().toFixed(2)+"K";
+		if (model.energyNet() < 1000 && model.energyNet() > -1000)
+		{
+			return a+model.energyNet();
+		}
+		
+		return a+model.energyNetK()+" K";
 	});
 	model.energyGainKStr = ko.computed(function() {
 		return model.energyGainK().toFixed(2)+"K";
 	});
 	model.energyLossKStr = ko.computed(function() {
 		return model.energyLossK().toFixed(2)+"K";
+	});
+
+	model.maxEnergyKStr = ko.computed(function() {
+		var energyStorageK = model.maxEnergy() / 1000;
+		if (energyStorageK > 0)
+			return energyStorageK+"K";
+		return energyStorageK;
+	});
+
+	model.currentEnergyKStr = ko.computed(function() {
+		var currentEnergyK = model.currentEnergy() / 1000;
+		if (currentEnergyK > 0)
+			return currentEnergyK+"K";
+		return currentEnergyK;
+	});
+
+	model.maxMetalKStr = ko.computed(function() {
+		var metalstorageK = model.maxMetal() / 1000;
+		if (metalstorageK > 0)
+			return metalstorageK+"K";
+		return metalstorageK;
+	});
+
+	model.currentMetalKStr = ko.computed(function() {
+		var currentMetalK = model.currentMetal() / 1000;
+		if (currentMetalK > 0)
+			return currentMetalK+" K";
+		return currentMetalK;
 	});
 	
 	var possibleInf = function(n) {
