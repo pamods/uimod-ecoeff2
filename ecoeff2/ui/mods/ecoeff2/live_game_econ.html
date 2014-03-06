@@ -1,69 +1,61 @@
 <div id="ecoeff2container">
 	<div class="centerdiv">
-		<div class="metalDisplay" data-bind="css: {
-			criticalEconomy: isBlink() && notEnoughMetal(),
-			stallingEconomy: (!isBlink() && notEnoughMetal()) || metalIsStalling(),
-			droppingEconomy: metalIsDropping(),
-			okayEconomy: metalIsOkay(),
-			spoiledEconomy: metalIsSpoiled(),
-		}">
-			<div class="metalBarDisplay">
+		<div class="metalDisplay" >
+			<div class="metalColorFrame colorFrameDisplay" data-bind="css: {
+				criticalEconomy: isBlink() && notEnoughMetal(),
+				stallingEconomy: (!isBlink() && notEnoughMetal()) || metalIsStalling(),
+				droppingEconomy: metalIsDropping(),
+				okayEconomy: metalIsOkay(),
+				spoiledEconomy: metalIsSpoiled(),
+			}">
+				<div class="metalEffDiv shadow20" data-bind="text: roundMetalEff"></div>
+			</div>
+			<div class="metalBarDisplay barDisplay">
 				<div class="ecoEffbarFrame">
-					<div class="status_bar_metal" data-bind="style: { width: metalFractionString() }"></div>
+					<div class="status_bar_metal storage_bar" data-bind="style: { width: metalFractionString() }">
+						<div class="stats_bar_left shadow20">
+							<div data-bind="text: metalNetString, css: { rate_pos: metalNet() > 0, rate_neg: metalNet() < 0}">+8888</div>
+						</div>
+						<div class="stats_bar_right shadow20">
+							<span id="Span1" data-bind="text: currentMetalKStr">8888</span>/<span id="Span2" data-bind="text: maxMetalKStr">8888</span>
+						</div>
+					</div>
 				</div>
-				<div class="metal_status_stats">
-					<span id="Span1" data-bind="text: currentMetal">8888</span>/<span id="Span2" data-bind="text: maxMetal">8888</span>
-				</div>
-				<div class="metal_stat_icon">
-					<img src="img/status_bar/icon_status_metal.png" />
-				</div>
-				<div class="metalEffDiv" data-bind="text: roundMetalEff"></div>
 			</div>
 		</div>
 
 		<div class="overallEconomy" data-bind="css: {
-			overallCritical: isBlink() && notEnoughRes(),
-			overallStalling: (!isBlink() && notEnoughRes()) || overallStalling(),
-			overallDropping: overallDropping(),
-			overallOkay: overallOk(),
-			overallSpoiled: overallSpoiled(),
+			criticalEconomy: isBlink() && notEnoughRes(),
+			stallingEconomy: (!isBlink() && notEnoughRes()) || overallStalling(),
+			droppingEconomy: overallDropping(),
+			okayEconomy: overallOk(),
+			spoiledEconomy: overallSpoiled(),
 		}">
-			<div class="resNetsVals">
-				<div class="metalVals">
-					<div class="rate_stat rate_positive" data-bind="text: metalGain">+8888</div>
-					<div class="rate_stat rate_negative" data-bind="text: metalLoss">-8888</div>
-					<div class="metal_net_div" data-bind="text: metalNetString, css: { rate_positive: metalNet() > 0, rate_negative: metalNet() < 0}">+8888</div>
-				</div>
-
-				<div class="energyVals">
-					<div class="rate_stat rate_positive" id="Div3" data-bind="text: energyGainKStr">+7777</div>
-					<div class="rate_stat rate_negative" id="Div4" data-bind="text: energyLossKStr">-8888</div>
-					<div class="energy_net_div" data-bind="text: energyNetKStr, css: { rate_positive: energyNet() > 0, rate_negative: energyNet() < 0}">+8888</div>
-				</div>
-			</div>
-
-			<div class="overallEff" data-bind="text: roundOverallEff"></div>
+			<div class="overallEff shadow20" data-bind="text: roundOverallEff"></div>
 		</div>
+		<div class="energyDisplay">
 
-		<div class="energyDisplay"
-			data-bind="css: {
-			criticalEconomy: isBlink() && notEnoughEnergy(),
-			stallingEconomy: (!isBlink() && notEnoughEnergy()) || energyIsStalling(),
-			droppingEconomy: energyIsDropping(),
-			okayEconomy: energyIsOkay(),
-			spoiledEconomy: energyIsSpoiled(),
-		}">
-			<div class="energyBarDisplay">
+				<div class="energyColorFrame colorFrameDisplay"
+							data-bind="css: {
+							criticalEconomy: isBlink() && notEnoughEnergy(),
+							stallingEconomy: (!isBlink() && notEnoughEnergy()) || energyIsStalling(),
+							droppingEconomy: energyIsDropping(),
+							okayEconomy: energyIsOkay(),
+							spoiledEconomy: energyIsSpoiled(),
+						}">
+						<div class="energyEffDiv shadow20" data-bind="text: roundEnergyEff"></div>
+				</div>
+				<div class="energyBarDisplay barDisplay">
 				<div class="ecoEffbarFrame">
-					<div class="status_bar_energy" data-bind="style: { width: energyFractionString() }"></div>
+					<div class="status_bar_energy storage_bar" data-bind="style: { width: energyFractionString() }">
+						<div class="stats_bar_left shadow20">
+							<div data-bind="text: energyNetKStr, css:{rate_pos : energyNetK() > 0, rate_neg: energyNetK() <= 0}" >+7777</div>
+						</div>
+						<div class="stats_bar_right shadow20">
+							<span id="Span3" data-bind="text: currentEnergyKStr">8888</span>/<span id="Span4" data-bind="text: maxEnergyKStr">8888</span>
+						</div>
+					</div>
 				</div>
-				<div class="energy_status_stats">
-					<span id="Span3" data-bind="text: currentEnergy">8888</span>/<span id="Span4" data-bind="text: maxEnergy">8888</span>
-				</div>
-				<div class="energy_stat_icon">
-					<img src="img/status_bar/icon_status_energy.png" />
-				</div>
-				<div class="energyEffDiv" data-bind="text: roundEnergyEff"></div>
 			</div>
 		</div>
 	</div>
