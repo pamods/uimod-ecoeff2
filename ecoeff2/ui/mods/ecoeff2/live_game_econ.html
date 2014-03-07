@@ -14,7 +14,7 @@
 				<div class="ecoEffbarFrame">
 					<div class="status_bar_metal storage_bar" data-bind="style: { width: metalFractionString() }">
 						<div class="stats_bar_left shadow20">
-							<div data-bind="text: metalNetString, css: { rate_pos: metalNet() > 0, rate_neg: metalNet() < 0}">+8888</div>
+							<div data-bind="text: metalGain, css: { rate_pos: metalNet() > 0, rate_neg: metalNet() < 0}">+8888</div>
 						</div>
 						<div class="stats_bar_right shadow20">
 							<span id="Span1" data-bind="text: currentMetalKStr">8888</span>/<span id="Span2" data-bind="text: maxMetalKStr">8888</span>
@@ -49,7 +49,7 @@
 				<div class="ecoEffbarFrame">
 					<div class="status_bar_energy storage_bar" data-bind="style: { width: energyFractionString() }">
 						<div class="stats_bar_left shadow20">
-							<div data-bind="text: energyNetKStr, css:{rate_pos : energyNetK() > 0, rate_neg: energyNetK() <= 0}" >+7777</div>
+							<div data-bind="text: energyGainKStr , css:{rate_pos : energyNetK() > 0, rate_neg: energyNetK() <= 0}" >+7777</div>
 						</div>
 						<div class="stats_bar_right shadow20">
 							<span id="Span3" data-bind="text: currentEnergyKStr">8888</span>/<span id="Span4" data-bind="text: maxEnergyKStr">8888</span>
