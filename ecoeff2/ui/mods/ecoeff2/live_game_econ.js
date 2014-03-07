@@ -89,7 +89,7 @@
 		return (model.metalIsStalling() || model.energyIsStalling()) && !model.notEnoughRes();
 	});
 	
-	model.overallDropping = ko.computed(function() {**
+	model.overallDropping = ko.computed(function() {
 		return model.metalIsDropping() && (model.energyIsSpoiled() || model.energyIsOkay() || model.energyIsDropping());
 	});
 
